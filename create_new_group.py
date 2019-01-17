@@ -44,7 +44,7 @@ class CreateNewGroup(unittest.TestCase):
         except NoAlertPresentException as e: return False
         return True
     
-     def tearDown(self):
+    def tearDown(self):
         self.wd.quit()
 
 if __name__ == "__main__":
