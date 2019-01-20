@@ -24,7 +24,7 @@ class CreateNewGroup(unittest.TestCase):
         wd.find_element_by_link_text("group page").click()
 
     def create_new_group(self, wd, group_name, header, footer):
-        # init group creatiion
+        # init group creation
         wd.find_element_by_name("new").click()
         # fill group form
         wd.find_element_by_name("group_name").click()
