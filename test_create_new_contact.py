@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 import unittest
+from contact import Contact
 
 class CreateNewContact(unittest.TestCase):
     def setUp(self):
@@ -13,7 +14,7 @@ class CreateNewContact(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, login="admin", password="secret")
-        self.create_new_contact(wd, firstname="Свидетель", lastname="ИзФрязино")
+        self.create_new_contact(wd, Contact(firstname="Свидетель", lastname="ИзФрязино"))
         self.return_to_contacts_page(wd)
         self.logout(wd)
 
@@ -23,16 +24,16 @@ class CreateNewContact(unittest.TestCase):
     def return_to_contacts_page(self, wd):
         wd.find_element_by_link_text("home page").click()
 
-    def create_new_contact(self, wd, firstname, lastname):
+    def create_new_contact(self, wd, contact):
         # init new contact creation
         wd.find_element_by_link_text("add new").click()
         # fill new contact form
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(firstname)
+        wd.find_element_by_name("firstname").send_keys(contact.firstname)
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(lastname)
+        wd.find_element_by_name("lastname").send_keys(contact.lastname)
         # submit creation
         wd.find_element_by_xpath("(//input[@name='submit'])").click()
 
