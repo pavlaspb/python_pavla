@@ -28,6 +28,11 @@ class CreateNewGroup(unittest.TestCase):
         # init group creation
         wd.find_element_by_name("new").click()
         # fill group form
+        self.group_filling(group, wd)
+        #submit group creation
+        wd.find_element_by_name("submit").click()
+
+    def group_filling(self, group, wd):
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
         wd.find_element_by_name("group_name").send_keys(group.name)
@@ -37,8 +42,6 @@ class CreateNewGroup(unittest.TestCase):
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
         wd.find_element_by_name("group_footer").send_keys(group.footer)
-        #submit group creation
-        wd.find_element_by_name("submit").click()
 
     def login(self, wd, username, password):
         wd.find_element_by_name("user").clear()

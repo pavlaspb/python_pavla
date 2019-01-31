@@ -28,14 +28,17 @@ class CreateNewContact(unittest.TestCase):
         # init new contact creation
         wd.find_element_by_link_text("add new").click()
         # fill new contact form
+        self.contact_filling(contact, wd)
+        # submit creation
+        wd.find_element_by_xpath("(//input[@name='submit'])").click()
+
+    def contact_filling(self, contact, wd):
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
         wd.find_element_by_name("lastname").click()
         wd.find_element_by_name("lastname").clear()
         wd.find_element_by_name("lastname").send_keys(contact.lastname)
-        # submit creation
-        wd.find_element_by_xpath("(//input[@name='submit'])").click()
 
     def login(self, wd, login, password):
         wd.find_element_by_name("user").click()
