@@ -16,4 +16,3 @@ def test_create_new_group(app):
     app.create_new_group(Group(name="Pavla", header="header", footer="footer"))
     app.return_to_group_page()
     app.session.logout()
-
