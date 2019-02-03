@@ -1,10 +1,12 @@
 from selenium import webdriver
+from fixture.session import SessionHelper
 
 class Application_group:
 
     def __init__(self):
         self.wd = webdriver.Firefox()
         self.wd.implicitly_wait(60)
+        self.session = SessionHelper(self)
 
     def logout(self):
         wd = self.wd
