@@ -12,7 +12,7 @@ def app(request):
 
 def test_create_new_contact(app):
     app.open_home_page()
-    app.login(login="admin", password="secret")
+    app.session.login(login="admin", password="secret")
     app.create_new_contact(Contact(firstname="Свидетель", lastname="ИзФрязино"))
     app.return_to_contacts_page()
-    app.logout()
+    app.session.logout()
